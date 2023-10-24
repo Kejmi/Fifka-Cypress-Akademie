@@ -12,8 +12,8 @@ export class Projects {
             return this;       
         }
 
-        typeProjectName (projectName) {
-            cy.get(this.nameField).type(projectName);
+        typeProjectName (randomProjectName) {
+            cy.get(this.nameField).type(randomProjectName);
             return this;
         }
 

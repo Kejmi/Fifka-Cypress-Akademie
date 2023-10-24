@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 
 describe('Login, select Projects, add project, save it and logout', () => {
     it('The test', () => {
-        const projectName = faker.commerce.productMaterial();
+        const randomProjectName = faker.commerce.productMaterial();
         new LoginPage()
         .openPmtool()
         .typeUsername("cy_podzim_2023")
@@ -11,7 +11,7 @@ describe('Login, select Projects, add project, save it and logout', () => {
         .clickLogin()
         .clickProjects()
         .clickAddProject()
-        .typeProjectName(projectName)
+        .typeProjectName(randomProjectName)
         .clickSaveButton()
         .clickProfileSection()
         .clickLogOff();
