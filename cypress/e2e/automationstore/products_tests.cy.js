@@ -5,6 +5,7 @@ describe('Automation Store products tests', () => {
         new HomePage()
         .openStore()
         .clickSkinsheenProduct()
+        .typeProductQuantity(5)
         .clickBasket();
     });
 });
