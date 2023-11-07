@@ -6,8 +6,8 @@ export class LostPasswordPage {
         this.lostPasswordPage = "http://tredgate.com/pmtool/index.php?module=users/restore_password";
         this.usernameInput = ":nth-child(2) > .input-icon > .form-control";
         this.emailInput = ":nth-child(3) > .input-icon > .form-control";
-        this.sendButton = ".btn-info"
-        this.backButton = "'#back-btn"
+        this.sendButton = ".btn-info";
+        this.backButton = "#back-btn";
     }
 
 typeUsername (username) {
@@ -21,13 +21,13 @@ typeEmail (email){
 }
 
 clickBack (){
-    cy.get(this.sendButton).click();
-    return LoginPage();
+    cy.get(this.backButton).click();
+    return new LoginPage();
 }
 
 clickSend () {
     cy.get(this.sendButton).click();
-    return LoginPage();
+    return new LoginPage();
 }
 
 }
