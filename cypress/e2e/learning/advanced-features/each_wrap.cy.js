@@ -10,10 +10,10 @@ describe('Using Each and Wrap function', () => {
     });
 it.skip("Checking if all rows in Project table has actions delete and edit", () => {
     cy.get("tbody .listing-table-tr").each((row) => {
-      // ! špatně !
-      // ! row.should("be.visible"); !
-      // ! špatně !
-      // ! cy.get(row).should("be.visible"); !
+      //  špatně 
+      //  row.should("be.visible"); 
+      //  špatně !
+      //  cy.get(row).should("be.visible"); 
       caches.wrap(row).should("be.visible");
     });
 
