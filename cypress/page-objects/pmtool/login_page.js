@@ -20,12 +20,12 @@ export class LoginPage {
   }
 
   typeUsername(username) {
-    cy.get(this.usernameInput).type(username);
+    cy.get(this.usernameInput).type(username, {log: false});
     return this;
   }
 
   typePassword(password) {
-    cy.get(this.passwordInput).type(password);
+    cy.get(this.passwordInput).type(password, {log: false});
     return this;
   }
   
