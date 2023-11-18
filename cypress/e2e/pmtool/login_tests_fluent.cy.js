@@ -1,24 +1,19 @@
 import { LoginPage } from "../../page-objects/pmtool/login_page";
 
-describe('Fluent Login Tests', () => {
+describe("Fluent Login tests", () => {
+  beforeEach(() => {
+    new LoginPage().openPmtool();
+  });
+  it("Login to pmtool using Fluent API test", () => {
+    new LoginPage()
+      .typeUsername(Cypress.env("pmtool_username"))
+      .typePassword(Cypress.env("pmtool_password"))
+      .clickLogin()
+      .clickProfile()
+      .clickLogoff();
+  });
 
-    beforeEach(() => {
-        new LoginPage().
-            openPmtool();
-    });
-
-    it('Login to pmtool using Fluent API test', () => {
-        new LoginPage()
-        .typeUsername(Cypress.env("pmtool_username"))
-        .typePassword(Cypress.env("pmtool_password"))
-        .clickLogin()
-        .clickProfileSection()
-        .clickLogOff();
-    })
-
-    it('Click on lost password and return back', () => {
-        new LoginPage()
-        .clickPasswordForgotten()
-        .clickBack();
-    });
+  it("Open and close forgotten password page", () => {
+    new LoginPage().clickPasswordForgotten().clickBack();
+  });
 });
