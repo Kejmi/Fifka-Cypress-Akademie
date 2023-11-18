@@ -1,23 +1,23 @@
-describe('Forms tests', () => {
-    beforeEach(() => {
-        cy.visit("http://tredgate.com/webtrain/registration.html");
-    });
-it("Check Radio button", () => {
+describe("Forms tests", () => {
+  beforeEach(() => {
+    cy.visit("http://tredgate.com/webtrain/registration.html");
+  });
+
+  it("Check Radio button", () => {
     cy.get("input[name='subscription']").check("basic");
     cy.get("#basic").should("be.checked");
     cy.get("#premium").should("not.be.checked");
   });
 
-it("Check 2 interests", () => {
-    cy.get('input[name="interests[]"]').check("sports");
-    cy.get('input[name="interests[]"]').check("reading");
+  it("Check 2 interests", () => {
+    cy.get('input[name="interests[]"]').check(["sports", "reading"]);
     cy.get("#interests-sports").should("be.checked");
     cy.get("#interests-reading").should("be.checked");
     cy.get("#interests-music").should("not.be.checked");
     cy.get("#interests-travel").should("not.be.checked");
   });
 
-it("Check and uncheck checkbox", () => {
+  it("Check and uncheck checkbox", () => {
     cy.get('input[name="interests[]"]').check(["sports", "reading"]);
     cy.get("#interests-sports").should("be.checked");
     cy.get("#interests-reading").should("be.checked");
@@ -43,17 +43,16 @@ it("Check and uncheck checkbox", () => {
   });
 
   it("Upload file", () => {
-    const fileName = "/Users/Kamil/Downloads/signin-signed.pdf";
+    const fileName = "/Users/petrfifka/Downloads/Kupony.png";
     cy.get("#file-upload").selectFile(fileName);
   });
 
-  it.only("Upload file fixtures", () => {
+  it("Upload file fixtures", () => {
     cy.fixture("test.txt", { encoding: null }).as("uploadFile");
     cy.get("#file-upload").selectFile("@uploadFile");
   });
 
-  it("Type date", () => {
+  it.only("Type date", () => {
     cy.get("#datepicker").type("1990-05-01").should("have.value", "1990-05-01");
   });
-
 });
