@@ -1,9 +1,7 @@
 import { AccountCreatedPage } from "./account_created_page";
-import { HeaderSection } from "./header_section";
 
-export class CreateAccountPage extends HeaderSection {
+export class CreateAccountPage {
     constructor() {
-        super();
         this.firstNameInput = "#AccountFrm_firstname";
         this.lastNameInput = "#AccountFrm_lastname";
         this.emailInput = "#AccountFrm_email";
@@ -40,7 +38,7 @@ export class CreateAccountPage extends HeaderSection {
     } 
 
     typeTelephone(telephone) {
-        cy.get(this.firstNameInput).type(telephone);
+        cy.get(this.telephoneInput).type(telephone);
         return this;
     }
 
@@ -80,7 +78,7 @@ export class CreateAccountPage extends HeaderSection {
     }
 
     selectCountry(country) {
-        cy.get(this.countrySelect).type(country);
+        cy.get(this.countrySelect).select(country);
         cy.wait(1000);
         return this;
     }

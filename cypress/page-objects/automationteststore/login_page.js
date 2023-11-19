@@ -1,9 +1,7 @@
 import { CreateAccountPage } from "./create_account_page";
-import { HeaderSection } from "./header_section";
 
-export class LoginPage extends HeaderSection {
+export class LoginPage{
     constructor() {
-        super();
         this.continueButton = "button[title='Continue']";
     }
 

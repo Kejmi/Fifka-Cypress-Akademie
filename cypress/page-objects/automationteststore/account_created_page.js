@@ -4,7 +4,7 @@ export class AccountCreatedPage {
     }
 
     confirmAccountCreation() {
-        cy.get(this.accountCreatedText).should("have.text", "YOUR ACCOUNT HAS BEEN CREATED!")
+        cy.get(this.accountCreatedText).should("have.text", " Your Account Has Been Created!")
         return this;
     }
 }
