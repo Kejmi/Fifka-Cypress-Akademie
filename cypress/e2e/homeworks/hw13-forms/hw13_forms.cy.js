@@ -1,4 +1,5 @@
 import { HomePage } from "../../../page-objects/automationteststore/home_page";
+import { faker } from "@faker-js/faker";
 
 describe('Create new account tests', () => {
     it('Get to register page, fill form, confirm and check login', () => {
@@ -11,7 +12,7 @@ describe('Create new account tests', () => {
         const address1 = faker.location.streetAddress();
         const address2 = faker.location.secondaryAddress();
         const city = faker.location.city();
-        const zipcode = faker.location.zipcode('### ##');
+        const zipcode = faker.location.zipCode('### ##');
         const loginName = firstName;
         const password = faker.internet.password({length: 10});
         const passwordConfirm = password;
