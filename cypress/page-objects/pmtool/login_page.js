@@ -1,10 +1,11 @@
 import { HomePage } from "./home_page";
 import { LostPasswordPage } from "./lost_password_page";
+import { createCustomElement } from "../../helpers/custom_element";
 
 export class LoginPage {
-  constructor() {
+constructor() {
     this.pmtoolUrl = "http://tredgate.com/pmtool/";
-    this.usernameInput = "#username";
+    this.usernameInput = createCustomElement("#username");
     this.passwordInput = "#password";
     this.loginButton = ".btn";
     this.forgetPasswordButton = "#forget_password";
@@ -20,7 +21,7 @@ export class LoginPage {
   }
 
   typeUsername(username) {
-    cy.get(this.usernameInput).type(username);
+    this.usernameInput.get().type(username);
     return this;
   }
 
@@ -39,17 +40,37 @@ export class LoginPage {
     return new LostPasswordPage();
   }
 
+  pageHeaderIsVisible() {
+    cy.get(this.pageHeader).should("be.visible");
+    return this;
+  }
+
   pageHeaderHasText(headerText) {
     cy.get(this.pageHeader).should("have.text", headerText);
     return this;
   }
 
   usernameHasPlaceholder(placeholderText) {
-    cy.get(this.usernameInput).should(
+    this.usernameInput.get().should(
       "have.attr",
       "placeholder",
       placeholderText
     );
+    return this;
+  }
+
+  usernameIsVisible() {
+    this.usernameInput.get().should("be.visible");
+    return this;
+  }
+
+  usernameHasValue(value) {
+    this.usernameInput.get().should("have.value", value);
+    return this;
+  }
+
+  passwordIsVisible() {
+    cy.get(this.passwordInput).should("be.visible");
     return this;
   }
 
@@ -62,8 +83,18 @@ export class LoginPage {
     return this;
   }
 
+  rememberMeIsVisible() {
+    cy.get(this.rememberMeCheckbox).should("be.visible");
+    return this;
+  }
+
   rememberMeHasText(rememberMeText) {
-    cy.get(this.rememberMeCheckbox).should("have.text", rememberMeText);
+    cy.get(this.rememberMeCheckbox).should("contain.text", rememberMeText);
+    return this;
+  }
+
+  passwordForgottenIsVisible() {
+    cy.get(this.forgetPasswordButton).should("be.visible");
     return this;
   }
 
